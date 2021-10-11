@@ -1,0 +1,145 @@
+     OLE.CmdOut(A$)               to send a command line to run
+                                  => automatic reset of TextIn
+                                  => automatic reset of waitStatus
+A$ = OLE.CmdStatus                ON/OFF to read status of CMDole.exe children process
+     OLE.CmdSet(A$)               "SOFT.EXE" to launch CMDole.exe children process
+                                  "OFF" to stop CMDole.exe children process
+A$ = OLE.TextIn                   to read text received after last command sent
+A  = OLE.LineNbrIn                to read Nbr of lines received after last command sent
+A$ = OLE.LineIn(Nb)               to read a specific line
+     OLE.FilterSet(A$)            "ON"/"OFF" to activate/desactivate Filter at TextIn reading
+     OLE.FilterFor(Nb),(A$),(B$)  0<9 KeyWords A$ to search in text received after a command sent
+                                  and to replace by B$
+     OLE.WaitFor(Nb),(A$),(B$)    0<5 KeyWords A$ to search in text to receive 
+                                  => if B$ = "" then modification of WaitStatus
+                                  => if B$ <> "" then B$ is sent on command line
+     OLE.WaitReset                to make a reset of Waitstatus
+A  = OLE.WaitStatus               to read result of WaitFor search (if nothing to send back)
+                                  if in WaitFor() A$ <> "" and B$ = "" => WaitStatus positionned
+                                  result = $1+$2+$4+$8+$10 for WaitFor(0,1,2,3,4))
+     OLE.InitReset                to Reset WaitFor(), Filterfor() and Show()
+     OLE.Path                     to read path of CMDole
+     OLE.Show(A)                  0/1/2 to manage CmdOle windows Invisible/protected+Visible/Visible
+     OLE.UserOut(A$),(B$)         to send automatic user A$= request of User / B$ = User to send
+     OLE.PasswOut(A$),(B$)        to send automatic Password A$= request of password / B$ = Password to send
+    
+'************************
+'Plink Help and commands
+'************************
+' PuTTY Link: command-line connection utility
+' Release 0.57
+' Usage: plink [options] [user@]host [command]
+'       ("host" can also be a PuTTY saved session name)
+' Options:
+'  -V        print version information
+'  -v        show verbose messages
+'  -load sessname  Load settings from saved session
+'  -ssh -telnet -rlogin -raw
+'            force use of a particular protocol
+'  -P port   connect to specified port
+'  -l user   connect with specified username
+'  -m file   read remote command(s) from file
+'  -batch    disable all interactive prompts
+' The following options only apply to SSH connections:
+'  -pw passw login with specified password
+'  -D [listen-IP:]listen-port
+'            Dynamic SOCKS-based port forwarding
+'  -L [listen-IP:]listen-port:host:port
+'            Forward local port to remote address
+'  -R [listen-IP:]listen-port:host:port
+'            Forward remote port to local address
+'  -X -x     enable / disable X11 forwarding
+'  -A -a     enable / disable agent forwarding
+'  -t -T     enable / disable pty allocation
+'  -1 -2     force use of particular protocol version
+'  -C        enable compression
+'  -i key    private key file for authentication
+'  -s        remote command is an SSH subsystem (SSH-2 only)
+'  -N        don't start a shell/command (SSH-2 only)
+
+
+'***********************
+' all command on psftp :
+'***********************
+' !      run a local command
+' bye    finish your SFTP session
+' cd     change your remote working directory
+' chmod  change file permissions and modes
+' del    delete a file
+' dir    list contents of a remote directory
+' exit   finish your SFTP session
+' get    download a file from the server to your local machine
+' help   give help
+' lcd    change local working directory
+' lpwd   print local working directory
+' ls     list contents of a remote directory
+' mkdir  create a directory on the remote server
+' mv     move or rename a file on the remote server
+' open   connect to a host
+' put    upload a file from your local machine to the server
+' pwd    print your remote working directory
+' quit   finish your SFTP session
+' reget  continue downloading a file
+' ren    move or rename a file on the remote server
+' reput  continue uploading a file
+' rm     delete a file
+' rmdir  remove a directory on the remote server
+
+
+'***********************
+' all command on pftp :
+'***********************
+to launch pftp :
+ pftp [user@]host [21] [-pw password]
+ pftp host [port]
+all pftp commands :
+ !dir   list contents of current directory in local client
+ !dir  [selection-criteria]
+ !mkdir create a directory in local client
+ !mkdir New-Directory
+ !rmdir remove a directory in local client
+ !rmdir Directory
+ !ren   rename a file in local client
+ !ren   Old-file New-file
+ !del   remove a file in local client
+ !del   File
+ bye    finish your FTP session
+ cd     change your remote working directory
+ cd     Sub-directory
+ chmod  change file permissions and modes
+ chmod  Attrib file
+ del    delete a file
+ del    File
+ dir    list contents of a remote directory
+ dir    [Sub-directory]
+ exit   finish your FTP session
+ get    download a file from the server to your local machine
+ get    Host-file [local-file]
+ help   print this help
+ lcd    change local working directory
+ lcd    Sub-directory
+ lpwd   print current local working directory
+ lpwd   
+ ls     list contents of a remote directory
+ ls     [Sub-directory] 
+ mkdir  create a directory on the remote server
+ mkdir  New-directory
+ mv     move or rename a file on the remote server
+ mv     Old-file new-file
+ open   connect to a host
+ open   [User@]host [port] [-pw password]
+ put    upload a file from your local machine to the server
+ put    Local-file [host-file]
+ pwd    print your remote working directory
+ pwd    
+ quit   finish your FTP session
+ reget  continue downloading a file
+ reget  Host-file [local-file]
+ ren    move or rename a file on the remote server
+ ren    Old-file New-file 
+ reput  continue uploading a file
+ reput  Local-file [host-file]
+ rm     delete a file on remote server
+ rm     Host-file
+ rmdir  remove a directory on the remote server
+ rmdir  Host-directory
